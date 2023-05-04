@@ -5,7 +5,7 @@ app = Flask(__name__, template_folder='Data/html/templates', static_folder='Data
 
 @app.route('/')
 def data_web():
-    file = [("1", "2", "3"),]
+    file = [("1", "2", "dima", "3"),]
     return render_template('home.html')
 
 

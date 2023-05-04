@@ -1,12 +1,13 @@
-from Data.Utils import utils
+from Data.Data_Base import load_db_into_list
 from flask import Flask, render_template
+
 
 app = Flask(__name__, template_folder='Data/html/templates', static_folder='Data/html/static')
 
 @app.route('/')
 def data_web():
-    file = [("1", "2", "3"),]
-    return render_template('home.html')
+    file = load_db_into_list()
+    return render_template('home.html', SCORES=file)
 
 
 

@@ -1,0 +1,29 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #DE2046;
+}
+
+h1 {
+  font-size: 20px;
+  color: #00008b;
+  text-align: center;
+}
+
+p {
+  font-size: 18px;
+  color: #DE2046;
+}
+#banner {
+	position: relative;
+	/*margin-bottom: 10px;*/
+	margin: 0 auto;
+	height: 127px;
+	max-width: 990px;
+	background-image: url(headerBackground.jpg);
+
+table, th, td {
+    width=1000px;
+    border: 1px solid;
+}

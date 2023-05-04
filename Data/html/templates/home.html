@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Python web page</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <script src="Data/html/JavaScrips/script.js"></script>
+
+  </head>
+
+  <body>
+
+    <div id="banner">
+      <h1>Pinter Counter</h1>
+    </div>
+
+		<table width="1000px">
+			<tr>
+				<th width="50px">Domain</th>
+				<th width="30px" align="center">Valid</th>
+                <th width="30px" align="center">CLL Valid</th>
+			</tr>
+			{% for i in SCORES %}
+			<tr>
+				<td scope="row" id="domain" title="{{ i[0] }}"> {{ i[0] }} </td>
+				<td scope="row" id="valid_d" align="center"> {{ i[1] }} </td>
+                <td scope="row" id="cll_valid_d" align="center"> {{ i[2] }} </td>
+			</tr>
+			{% endfor %}
+		</table>
+
+
+  </body>
+</html>

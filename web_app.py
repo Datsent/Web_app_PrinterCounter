@@ -5,11 +5,18 @@ from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__, template_folder='Data/html/templates', static_folder='Data/html/static')
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def data_web():
-    file = load_db_into_list()
-    return render_template('home.html', SCORES=file)
-
+    if request.method == 'POST':
+        tables = request.form.get('table')
+        print(tables)
+        file = load_db_into_list()
+        tables = ['Printer']
+        return render_template('home.html', SCORES=file, TABLES=tables)
+    else:
+        file = load_db_into_list()
+        tables = ['Printer']
+        return render_template('home.html', SCORES=file, TABLES=tables)
 @app.route('/redirect')
 def redirect_page():
     return redirect(url_for('data_web_post'))

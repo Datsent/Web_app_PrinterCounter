@@ -16,7 +16,18 @@
 
     </div>
     <div id="container">
-    <h1>Pinter Counter</h1>
+        <h1>Pinter Counter</h1>
+        <form action="/" method="POST">
+            <label for="cars">Choose a car:</label>
+            {% for i in TABLES %}
+            <select name="table" id="cars">
+                <option value='{{ i }}'>{{ i }}</option>
+
+            </select>
+            {% endfor %}
+            <br><br>
+            <input type="submit" class="button" value="Submit">
+        </form>
 
 		<table width="800px" style="table-layout:fixed;" class="gridtable">
 			<tr>
@@ -42,7 +53,7 @@
 			</tr>
 			{% endfor %}
 		</table>
-        <button id="add_new" onclick="window.location.href='/redirect'">Go to other page</button>
+        <button id="add_new" onclick="window.location.href='/redirect'">Add new Printer</button>
 		</div>
 
 

@@ -6,10 +6,18 @@ def load_db_into_list():
     cur = conn.cursor()
     with conn:
         cur.execute("SELECT * FROM Printers")
-        a = cur.fetchall()
+        list_db = cur.fetchall()
     conn.commit()
     conn.close()
-    return a
+    return list_db
+
+def get_tables_name():
+    conn = sqlite3.connect(utils.DB_FILE)
+
+    cursor = conn.execute("SELECT name FROM sqlite_master WHERE type='table';")
+    name_list = [table[0] for table in cursor.fetchall()]
+    conn.close()
+    return name_list
 
 def add_list_to_db(data):
     connection = sqlite3.connect(utils.DB_FILE)
@@ -24,5 +32,6 @@ def add_list_to_db(data):
     connection.close()
 
 if __name__ == '__main__':
-    add_list_to_db(['Dima', "MD12345", "10.1.1.210", "23.05.2023", "0", "40", "50000"])
+    #add_list_to_db(['Dima', "MD12345", "10.1.1.210", "23.05.2023", "0", "40", "50000"])
     #load_db_into_list()
+    get_tables_name()

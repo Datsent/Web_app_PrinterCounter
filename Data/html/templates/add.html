@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My Python web page</title>
+<!--    <LINK rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <LINK rel="stylesheet" type="text/css" href="../static/style.css">
+  </head>
+
+  <body id="body">
+    <div id="banner"></div>
+    <div id="container">
+        <h1>Add New Pinter</h1>
+        <form action="/add" method="POST">
+            <table width="800px" style="table-layout:fixed;" class="gridtable">
+			<tr>
+				<th width="50px" align="center">Name</th>
+				<th width="40px" align="center">Model</th>
+                <th width="20px" align="center">IP Address</th>
+                <th width="20px" align="center">Supply Date</th>
+                <th width="20px" align="center">Start Count</th>
+                <th width="20px" align="center">Last Count</th>
+                <th width="20px" align="center">Count</th>
+                <th width="20px" align="center">Total Pages</th>
+			</tr>
+
+			<tr>
+				<td scope="row" id="name" align="center"><input id="i_name" type="text" name="name"> </td>
+				<td scope="row" id="model" align="center"><input id="i_model" type="text" name="model"></td>
+                <td scope="row" id="address" align="center"> <input id="i_address" type="text" name="address"> </td>
+                <td scope="row" id="sup_date" align="center"> <input id="i_date" type="date" name="sup_date"> </td>
+                <td scope="row" id="start_count" align="center"> <input id="i_start_count" type="text" name="start_count"> </td>
+                <td scope="row" id="last_count" align="center"> <input id="i_last_count" type="text" name="last_count"> </td>
+                <td scope="row" id="count" align="center"> <input id="i_count" type="text" name="count"> </td>
+                <td scope="row" id="total" align="center"> <input id="add_new" type="submit" value="Submit"> </td>
+			</tr>
+
+		</table>
+        </form>
+	</div>
+
+  </body>
+</html>

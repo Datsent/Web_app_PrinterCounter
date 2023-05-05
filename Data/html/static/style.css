@@ -8,7 +8,9 @@ p {
   font-size: 18px;
   color: #DE2046;
 }
-
+#body {
+    background-image: url(background.png);
+}
 #banner {
 	position: relative;
 	/*margin-bottom: 10px;*/
@@ -18,16 +20,22 @@ p {
 	background-image: url(headerBackground.jpg);
 }
 #container {
-  height: 771px;
-  width: 990px;
+  height: 1200px auto;
+  width: 850px;
   margin: 100px auto;
 
   background-size: cover;
   background-position: left;
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
   border-radius: 20px;
   -webkit-border-radius: 20px;
   -moz-border-radius: 20px;
+}
+form {
+    height: 1200px auto;
+    width: 850px;
+    margin: 100px auto;
+
 }
 
 #name {
@@ -70,7 +78,7 @@ table.gridtable td {
 }
 table {
 	border-spacing: 40 0px;
-	margin: 100px auto;
+	margin: 50px auto;
 
 }
 
@@ -100,3 +108,44 @@ tfoot > tr  {
 tbody > tr:hover {
   background-color: #ffc107;
 }
+
+#i_model {
+    width: 100px;
+}
+#i_address {
+    width: 50px
+}
+#i_date {
+    width: 70px
+}
+#i_start_count {
+    width: 50px
+}
+#i_last_count {
+    width: 50px
+}
+#i_count {
+    width: 50px
+}
+#add_new {
+  display: inline-block;
+  /*padding: 15px 25px; */
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 3px #999;
+}
+
+#add_new:hover {background-color: #3e8e41}
+
+#add_new:active {
+  background-color: #3e8e41;
+  box-shadow: 0 2px #666;
+  transform: translateY(4px);
+}}

@@ -1,5 +1,5 @@
 import Data.Data_Base
-from Data.Data_Base import load_db_into_list
+
 from flask import Flask, render_template, request, redirect, url_for
 
 
@@ -8,14 +8,15 @@ app = Flask(__name__, template_folder='Data/html/templates', static_folder='Data
 @app.route('/', methods=['POST', 'GET'])
 def data_web():
     if request.method == 'POST':
-        tables = request.form.get('table')
-        print(tables)
-        file = load_db_into_list()
-        tables = ['Printer']
+        table = request.form.get('table')
+        tables = Data.Data_Base.get_tables_name()
+        print(table)
+        file = Data.Data_Base.load_db_into_list(table)
         return render_template('home.html', SCORES=file, TABLES=tables)
     else:
-        file = load_db_into_list()
-        tables = ['Printer']
+
+        file = Data.Data_Base.load_db_into_list('Printers')
+        tables = Data.Data_Base.get_tables_name()
         return render_template('home.html', SCORES=file, TABLES=tables)
 @app.route('/redirect')
 def redirect_page():
@@ -29,8 +30,9 @@ def data_web_post():
                        request.form.get('count')]
         print(new_printer)
         Data.Data_Base.add_list_to_db(new_printer)
-        file = load_db_into_list()
-        return render_template('home.html', SCORES=file)
+        tables = Data.Data_Base.get_tables_name()
+        file = Data.Data_Base.load_db_into_list('Printers')
+        return render_template('home.html', SCORES=file, TABLES=tables)
     else:
         return render_template('add.html')
 

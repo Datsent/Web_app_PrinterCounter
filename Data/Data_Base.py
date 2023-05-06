@@ -1,16 +1,43 @@
-import sqlite3
-from Data.Utils import utils
+import sqlite3, csv
 
-def load_db_into_list():
+from Data.Utils import utils
+from datetime import datetime
+
+def export_to_csv():
+    now = datetime.now()
+    formatted_date = now.strftime("%B_%Y")
+    conn = sqlite3.connect(utils.DB_FILE)
+    cursor = conn.cursor()
+    cursor.execute("SELECT * FROM Printers")
+    column_names = [description[0] for description in cursor.description]
+    data = cursor.fetchall()
+    with open(f'{formatted_date}.csv', 'w', newline='') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(column_names)
+        writer.writerows(data)
+    conn.close()
+
+def load_db_into_list(table):
     conn = sqlite3.connect(utils.DB_FILE)
     cur = conn.cursor()
+    query = f'SELECT * FROM {table}'
     with conn:
-        cur.execute("SELECT * FROM Printers")
+        cur.execute(query)
         list_db = cur.fetchall()
     conn.commit()
     conn.close()
     return list_db
 
+def copy_table():
+    now = datetime.now()
+    formatted_date = now.strftime("%B_%Y")
+    conn = sqlite3.connect(utils.DB_FILE)
+    cursor = conn.cursor()
+    cursor.execute('CREATE TABLE new_table AS SELECT * FROM Printers')
+    query = f'ALTER TABLE new_table RENAME TO {formatted_date}'
+    cursor.execute(query)
+    conn.commit()
+    conn.close()
 def get_tables_name():
     conn = sqlite3.connect(utils.DB_FILE)
 
@@ -34,4 +61,6 @@ def add_list_to_db(data):
 if __name__ == '__main__':
     #add_list_to_db(['Dima', "MD12345", "10.1.1.210", "23.05.2023", "0", "40", "50000"])
     #load_db_into_list()
-    get_tables_name()
+    #get_tables_name()
+    #copy_table()
+    export_to_csv()

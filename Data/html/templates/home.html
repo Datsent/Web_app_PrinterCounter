@@ -19,14 +19,15 @@
         <h1>Pinter Counter</h1>
         <form action="/" method="POST">
             <label for="cars">Choose a car:</label>
-            {% for i in TABLES %}
-            <select name="table" id="cars">
-                <option value='{{ i }}'>{{ i }}</option>
 
+            <select name="table" id="cars">
+                {% for i in TABLES %}
+                <option value='{{ i }}'>{{ i }}</option>
+                {% endfor %}
             </select>
-            {% endfor %}
+
             <br><br>
-            <input type="submit" class="button" value="Submit">
+            <input type="submit" id="sub" class="sub" value="Submit">
         </form>
 
 		<table width="800px" style="table-layout:fixed;" class="gridtable">

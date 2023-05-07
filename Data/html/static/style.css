@@ -127,7 +127,7 @@ tbody > tr:hover {
 #i_count {
     width: 50px
 }
-#add_new {
+.add_new {
   display: inline-block;
   /*padding: 15px 25px; */
   font-size: 12px;
@@ -142,31 +142,9 @@ tbody > tr:hover {
   box-shadow: 0 3px #999;
 }
 
-#add_new:hover {background-color: #3e8e41}
+.add_new:hover {background-color: #3e8e41}
 
-#add_new:active {
-  background-color: #3e8e41;
-  box-shadow: 0 2px #666;
-  transform: translateY(4px);
-}}
-.sub {
-  display: inline-block;
-  /*padding: 15px 25px; */
-  font-size: 12px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 3px #999;
-}
-
-.sub:hover {background-color: #3e8e41}
-
-.sub:active {
+.add_new:active {
   background-color: #3e8e41;
   box-shadow: 0 2px #666;
   transform: translateY(4px);

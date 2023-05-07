@@ -27,19 +27,19 @@
             </select>
 
             <br><br>
-            <input type="submit" id="sub" class="sub" value="Submit">
+            <input type="submit"  class="add_new" value="Submit">
         </form>
 
 		<table width="800px" style="table-layout:fixed;" class="gridtable">
 			<tr>
-				<th width="20px" >Name</th>
+				<th width="50px" >Name</th>
 				<th width="50px" align="center">Model</th>
                 <th width="30px" align="center">IP Address</th>
                 <th width="30px" align="center">Supply Date</th>
                 <th width="10px" align="center">Start Count</th>
-                <th width="30px" align="center">Last Count</th>
-                <th width="30px" align="center">Count</th>
-                <th width="30px" align="center">Total Pages</th>
+                <th width="15px" align="center">Last Count</th>
+                <th width="15px" align="center">Count</th>
+                <th width="10px" align="center">Total Pages</th>
 			</tr>
 			{% for i in SCORES %}
 			<tr>
@@ -54,12 +54,9 @@
 			</tr>
 			{% endfor %}
 		</table>
-        <button id="add_new" onclick="window.location.href='/redirect'">Add new Printer</button>
+        <button class="add_new" onclick="window.location.href='/redirect'">Add new Printer</button>
+        <button  class="add_new"  onclick="window.location.href='/download'">Download</button>
 		</div>
 
-
-  <div>
-      <h1>Hello</h1>
-  </div>
   </body>
 </html>

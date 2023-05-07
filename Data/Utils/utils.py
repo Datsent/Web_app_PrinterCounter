@@ -1,1 +1,1 @@
-DB_FILE = 'db\\data.db'
+DB_FILE = 'Data\\db\\data.db'

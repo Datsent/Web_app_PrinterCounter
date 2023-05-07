@@ -3,7 +3,7 @@ import sqlite3, csv
 from Data.Utils import utils
 from datetime import datetime
 
-def export_to_csv():
+def export_to_csv(table):
     now = datetime.now()
     formatted_date = now.strftime("%B_%Y")
     conn = sqlite3.connect(utils.DB_FILE)
@@ -16,10 +16,35 @@ def export_to_csv():
         writer.writerow(column_names)
         writer.writerows(data)
     conn.close()
+    return f'{formatted_date}.csv'
+
+def addresses_list():
+    conn = sqlite3.connect(utils.DB_FILE)
+    cursor = conn.cursor()
+    query = "SELECT Model, Address FROM Printers"
+    cursor.execute(query)
+    results = cursor.fetchall()
+    column_list = [(row[0], row[1]) for row in results]
+    conn.close()
+    return column_list
+
+def edit_count(address, value):
+    # Connect to the SQLite database
+    conn = sqlite3.connect(utils.DB_FILE)
+    cursor = conn.cursor()
+    query = f"UPDATE Printers SET Count = '{value}' WHERE Address = '{address}'"
+    cursor.execute(query)
+    query = "UPDATE Printers SET Total_Pages = Count - Last_Count"
+    cursor.execute(query)
+    conn.commit()
+    conn.close()
 
 def load_db_into_list(table):
     conn = sqlite3.connect(utils.DB_FILE)
     cur = conn.cursor()
+    cur.execute('''CREATE TABLE IF NOT EXISTS Printers
+                      (Name TEXT, Model TEXT, Address TEXT, Sup_Date TEXT, Start_Count INT, Last_Count INT,
+                        Count INT, Total_Pages INT)''')
     query = f'SELECT * FROM {table}'
     with conn:
         cur.execute(query)
@@ -60,7 +85,9 @@ def add_list_to_db(data):
 
 if __name__ == '__main__':
     #add_list_to_db(['Dima', "MD12345", "10.1.1.210", "23.05.2023", "0", "40", "50000"])
-    #load_db_into_list()
+    #print(load_db_into_list('Printers'))
+    #edit_row('123')
+    #addresses_list()
     #get_tables_name()
     #copy_table()
-    export_to_csv()
+    export_to_csv('Printers')

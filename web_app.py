@@ -1,6 +1,6 @@
 import Data.Data_Base
 
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_file
 
 
 app = Flask(__name__, template_folder='Data/html/templates', static_folder='Data/html/static')
@@ -35,6 +35,13 @@ def data_web_post():
         return render_template('home.html', SCORES=file, TABLES=tables)
     else:
         return render_template('add.html')
+
+@app.route('/download')
+def download_file():
+    #Data.Data_Base.export_to_csv('Printers')
+    path = Data.Data_Base.export_to_csv('Printers')
+
+    return send_file(path, as_attachment=True)
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000, debug=True)

@@ -11,6 +11,13 @@ p {
 #body {
     background-image: url(background.png);
 }
+#down {
+    background-color: transparent;
+    border: none;
+    height: auto;
+    width: auto;
+    cursor: pointer;
+        }
 #banner {
 	position: relative;
 	/*margin-bottom: 10px;*/

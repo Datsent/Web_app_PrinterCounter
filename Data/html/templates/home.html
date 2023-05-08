@@ -18,15 +18,13 @@
     <div id="container">
         <h1>Pinter Counter</h1>
         <form action="/" method="POST">
-            <label for="cars">Choose a car:</label>
+            <label for="tables">Choose Table:</label>
 
-            <select name="table" id="cars">
+            <select name="table" id="tables">
                 {% for i in TABLES %}
                 <option value='{{ i }}'>{{ i }}</option>
                 {% endfor %}
             </select>
-
-            <br><br>
             <input type="submit"  class="add_new" value="Submit">
         </form>
 
@@ -40,6 +38,7 @@
                 <th width="15px" align="center">Last Count</th>
                 <th width="15px" align="center">Count</th>
                 <th width="10px" align="center">Total Pages</th>
+                <th width="10px" align="center">Driver</th>
 			</tr>
 			{% for i in SCORES %}
 			<tr>
@@ -51,9 +50,15 @@
                 <td scope="row" id="last_count" align="center"> {{ i[5] }} </td>
                 <td scope="row" id="count" align="center"> {{ i[6] }} </td>
                 <td scope="row" id="total" align="center"> {{ i[7] }} </td>
+                <td scope="row" id="driver" align="center">
+                         <form style="width: auto; margin: 0 auto;" action="/drivers" method="POST"><button type="submit" name="driver" id="down" value="{{ i[1] }}">
+                             <img src="static/download_icon.png" height="20px" width="20px" alt="File 1"></button>
+                         </form>
+                </td>
 			</tr>
 			{% endfor %}
 		</table>
+
         <button class="add_new" onclick="window.location.href='/redirect'">Add new Printer</button>
         <button  class="add_new"  onclick="window.location.href='/download'">Download</button>
 		</div>

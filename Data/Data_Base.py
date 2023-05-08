@@ -11,12 +11,12 @@ def export_to_csv(table):
     cursor.execute("SELECT * FROM Printers")
     column_names = [description[0] for description in cursor.description]
     data = cursor.fetchall()
-    with open(f'{formatted_date}.csv', 'w', newline='') as csvfile:
+    with open(f'Data\\db\\{formatted_date}.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(column_names)
         writer.writerows(data)
     conn.close()
-    return f'{formatted_date}.csv'
+    return f'Data\\db\\{formatted_date}.csv'
 
 def addresses_list():
     conn = sqlite3.connect(utils.DB_FILE)
@@ -63,6 +63,24 @@ def copy_table():
     cursor.execute(query)
     conn.commit()
     conn.close()
+
+def reset_counter():
+    conn = sqlite3.connect(utils.DB_FILE)
+    cursor = conn.cursor()
+    query = "UPDATE Printers SET Last_Count = Count"
+    cursor.execute(query)
+    query = "UPDATE Printers SET Total_Pages = Count - Last_Count"
+    cursor.execute(query)
+    conn.commit()
+    conn.close()
+
+def set_offline_printer(address):
+    conn = sqlite3.connect(utils.DB_FILE)
+    cursor = conn.cursor()
+    query = f"UPDATE Printers SET Count = Last_Count + 350 WHERE Address = '{address}'"
+    cursor.execute(query)
+    conn.commit()
+    conn.close()
 def get_tables_name():
     conn = sqlite3.connect(utils.DB_FILE)
 
@@ -90,4 +108,5 @@ if __name__ == '__main__':
     #addresses_list()
     #get_tables_name()
     #copy_table()
-    export_to_csv('Printers')
+    #export_to_csv('Printers')
+    reset_counter()

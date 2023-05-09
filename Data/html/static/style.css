@@ -11,6 +11,9 @@ p {
 #body {
     background-image: url(background.png);
 }
+#massage {
+    align: right;
+}
 #down {
     background-color: transparent;
     border: none;

@@ -24,4 +24,5 @@ def samsung(ip_adress):
     count = html[x:x + y].split('">')[2]
     return count
 if __name__ == "__main__":
-    print(samsung('10.1.2.200'))
+    print(samsung('10.1.1.180'))
+    input()

@@ -11,12 +11,12 @@ def export_to_csv(table):
     cursor.execute("SELECT * FROM Printers")
     column_names = [description[0] for description in cursor.description]
     data = cursor.fetchall()
-    with open(f'Data\\db\\{formatted_date}.csv', 'w', newline='') as csvfile:
+    with open(f'C:\\Web_app_PrinterCounter\\Data\\db\\{formatted_date}.csv', 'w', newline='') as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(column_names)
         writer.writerows(data)
     conn.close()
-    return f'Data\\db\\{formatted_date}.csv'
+    return f'C:\\Web_app_PrinterCounter\\Data\\db\\{formatted_date}.csv'
 
 def addresses_list():
     conn = sqlite3.connect(utils.DB_FILE)

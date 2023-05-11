@@ -17,7 +17,7 @@
     </div>
     <div id="container">
         <h1>Pinter Counter</h1>
-        <form action="/" method="POST">
+        <form style="width: 850px;" action="/" method="POST">
             <label for="tables">Choose Table:</label>
 
             <select name="table" id="tables">
@@ -26,7 +26,7 @@
                 {% endfor %}
             </select>
             <input type="submit"  class="add_new" value="Submit">
-            <label id="massage">Massage</label>
+<p id="massage" style="text-align: right;">{{LER}}</p>
         </form>
 
 

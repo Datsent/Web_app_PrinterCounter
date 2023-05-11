@@ -1,5 +1,6 @@
 import sqlite3, csv
-
+import os.path
+import time
 from Data.Utils import utils
 from datetime import datetime
 
@@ -18,6 +19,13 @@ def export_to_csv(table):
     conn.close()
     return f'C:\\Web_app_PrinterCounter\\Data\\db\\{formatted_date}.csv'
 
+def get_time_modify():
+    file_path = "Data/db/data.db"
+    modification_time = os.path.getmtime(file_path)
+
+    # Convert the modification time to a string
+    modification_time_string = time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(modification_time))
+    return modification_time_string
 def addresses_list():
     conn = sqlite3.connect(utils.DB_FILE)
     cursor = conn.cursor()
@@ -109,4 +117,5 @@ if __name__ == '__main__':
     #get_tables_name()
     #copy_table()
     #export_to_csv('Printers')
-    reset_counter()
+    #reset_counter()
+    print(get_time_modify())

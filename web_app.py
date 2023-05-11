@@ -1,6 +1,7 @@
 import Data.Data_Base
 import Data.Collector
 from flask import Flask, render_template, request, redirect, url_for, send_file
+from Data.Utils.utils import MASSAGE
 
 
 app = Flask(__name__, template_folder='Data/html/templates', static_folder='Data/html/static')
@@ -12,12 +13,14 @@ def data_web():
         tables = Data.Data_Base.get_tables_name()
         print(table)
         file = Data.Data_Base.load_db_into_list(table)
-        return render_template('home.html', SCORES=file, TABLES=tables)
+        massage = Data.Data_Base.get_time_modify()
+        return render_template('home.html', SCORES=file, TABLES=tables, LER=massage)
     else:
 
         file = Data.Data_Base.load_db_into_list('Printers')
         tables = Data.Data_Base.get_tables_name()
-        return render_template('home.html', SCORES=file, TABLES=tables)
+        massage = Data.Data_Base.get_time_modify()
+        return render_template('home.html', SCORES=file, TABLES=tables, LER=massage)
 @app.route('/redirect')
 def redirect_page():
     return redirect(url_for('data_web_post'))

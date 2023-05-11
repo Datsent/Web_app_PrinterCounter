@@ -12,7 +12,8 @@ p {
     background-image: url(background.png);
 }
 #massage {
-    align: right;
+   text-align: right;
+   margin: -20px auto;
 }
 #down {
     background-color: transparent;
@@ -43,7 +44,7 @@ p {
 }
 form {
     height: 1200px auto;
-    width: 850px;
+    width: 8500px;
     margin: 20px auto;
 
 }

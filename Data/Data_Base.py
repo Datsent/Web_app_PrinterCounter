@@ -24,7 +24,7 @@ def get_time_modify():
     modification_time = os.path.getmtime(file_path)
 
     # Convert the modification time to a string
-    modification_time_string = time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(modification_time))
+    modification_time_string = 'Last Update: ' + time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(modification_time))
     return modification_time_string
 def addresses_list():
     conn = sqlite3.connect(utils.DB_FILE)

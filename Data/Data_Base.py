@@ -20,8 +20,7 @@ def export_to_csv(table):
     return f'C:\\Web_app_PrinterCounter\\Data\\db\\{formatted_date}.csv'
 
 def get_time_modify():
-    file_path = "Data/db/data.db"
-    modification_time = os.path.getmtime(file_path)
+    modification_time = os.path.getmtime(utils.DB_FILE)
 
     # Convert the modification time to a string
     modification_time_string = 'Last Update: ' + time.strftime("%d-%m-%Y %H:%M:%S", time.localtime(modification_time))

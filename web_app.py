@@ -1,7 +1,6 @@
 import Data.Data_Base
 import Data.Collector
 from flask import Flask, render_template, request, redirect, url_for, send_file
-from Data.Utils.utils import MASSAGE
 
 
 app = Flask(__name__, template_folder='Data/html/templates', static_folder='Data/html/static')

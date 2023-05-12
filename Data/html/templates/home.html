@@ -41,6 +41,7 @@
                 <th width="15px" align="center">Count</th>
                 <th width="10px" align="center">Total Pages</th>
                 <th width="10px" align="center">Driver</th>
+                <th width="10px" align="center">Status</th>
 			</tr>
 			{% for i in SCORES %}
 			<tr>
@@ -57,7 +58,13 @@
                              <img src="static/download_icon.png" height="20px" width="20px" alt="File 1"></button>
                          </form>
                 </td>
-			</tr>
+                {% if i[8] == "V" %}
+                <td scope="row" id="status" align="center"> <img src="static/done.png" height="20px" width="20px" alt="File 1"></td>
+                {% else %}
+                <td scope="row" id="status" align="center"> <img src="static/error.png" height="20px" width="20px" alt="File 1"></td>
+                {% endif %}
+
+            </tr>
 			{% endfor %}
 		</table>
 

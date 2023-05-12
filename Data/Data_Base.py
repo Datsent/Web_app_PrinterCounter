@@ -47,6 +47,24 @@ def edit_count(address, value):
     conn.commit()
     conn.close()
 
+def status(address, status):
+    conn = sqlite3.connect(utils.DB_FILE)
+    cursor = conn.cursor()
+
+    # Execute an SQL query to check if the column exists in the table
+    query = "SELECT name FROM sqlite_master WHERE type='table' AND name='Printers' AND sql LIKE '%Status%'"
+    cursor.execute(query)
+    result = cursor.fetchone()
+    query = f"UPDATE Printers SET Status = '{status}' WHERE Address = '{address}'"
+    # Check if the column exists
+    if result is not None:
+        cursor.execute(query)
+    else:
+        cursor.execute('ALTER TABLE Printers ADD COLUMN Status TEXT')
+        cursor.execute(query)
+    conn.commit()
+    conn.close()
+
 def load_db_into_list(table):
     conn = sqlite3.connect(utils.DB_FILE)
     cur = conn.cursor()
@@ -118,4 +136,6 @@ if __name__ == '__main__':
     #copy_table()
     #export_to_csv('Printers')
     #reset_counter()
+    status('10.1.1.180', 'V')
     print(get_time_modify())
+

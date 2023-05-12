@@ -48,7 +48,7 @@ def edit_count(address, value):
     conn.close()
 
 def status(address, status):
-    conn = sqlite3.connect(utils.DB_FILE1)
+    conn = sqlite3.connect(utils.DB_FILE)
     cursor = conn.cursor()
 
     # Execute an SQL query to check if the column exists in the table

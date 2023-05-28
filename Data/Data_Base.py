@@ -104,6 +104,8 @@ def set_offline_printer(address):
     cursor = conn.cursor()
     query = f"UPDATE Printers SET Count = Last_Count + 350 WHERE Address = '{address}'"
     cursor.execute(query)
+    query = f"UPDATE Printers SET Total_Pages = 350 WHERE Address = '{address}'"
+    cursor.execute(query)
     conn.commit()
     conn.close()
 def get_tables_name():
